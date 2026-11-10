@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.png" width="180" alt="活人感 logo"></p>
+
 # 活人感 · astrbot_plugin_humanlike
 
 给 AstrBot 加一层「像人」的东西：学群里怎么说话、记得住人、偶尔自己上网找梗、学会自己收表情包。
