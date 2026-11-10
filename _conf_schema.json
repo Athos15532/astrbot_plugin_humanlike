@@ -1,0 +1,247 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "启用活人感插件",
+    "default": true
+  },
+  "style_enabled": {
+    "type": "bool",
+    "description": "学习群友说话方式（需要调用一次 LLM，按条数触发）",
+    "default": true
+  },
+  "style_learn_every": {
+    "type": "int",
+    "description": "每积累多少条新消息学习一轮（太小会费 token）",
+    "default": 25
+  },
+  "style_max_samples": {
+    "type": "int",
+    "description": "每个群最多保留多少条样本",
+    "default": 120
+  },
+  "style_max_chars": {
+    "type": "int",
+    "description": "注入提示词的风格片段最大字数",
+    "default": 600
+  },
+  "style_inject": {
+    "type": "bool",
+    "description": "把学到的风格注入系统提示词",
+    "default": true
+  },
+  "style_self_review": {
+    "type": "bool",
+    "description": "自我复盘：定期拿自己的回复和群风格对比，产出修正建议",
+    "default": true
+  },
+  "style_global": {
+    "type": "bool",
+    "description": "跨会话：把每个会话学到的风格汇总成全局风格，在别的对话里也能用",
+    "default": true
+  },
+  "style_global_chars": {
+    "type": "int",
+    "description": "全局风格注入的最大字数",
+    "default": 220
+  },
+  "user_memory_enabled": {
+    "type": "bool",
+    "description": "按 QQ 号认人：给每个人建长期档案，跨群跨私聊共用",
+    "default": true
+  },
+  "user_learn_every": {
+    "type": "int",
+    "description": "同一个人每积累多少条发言更新一次档案",
+    "default": 30
+  },
+  "user_max_chars": {
+    "type": "int",
+    "description": "单人档案注入的最大字数",
+    "default": 300
+  },
+  "cross_memory_enabled": {
+    "type": "bool",
+    "description": "跨会话内容记忆：把这个人在别的群/私聊说过的话带一段过来",
+    "default": true
+  },
+  "cross_max_msgs": {
+    "type": "int",
+    "description": "每次带几条最近的消息",
+    "default": 8
+  },
+  "cross_max_chars": {
+    "type": "int",
+    "description": "跨会话片段的最大字数",
+    "default": 320
+  },
+  "backfill_enabled": {
+    "type": "bool",
+    "description": "允许翻 AstrBot 的历史消息库补档案（只读）",
+    "default": true
+  },
+  "backfill_on_start": {
+    "type": "bool",
+    "description": "启动 90 秒后自动翻一次历史",
+    "default": true
+  },
+  "backfill_limit": {
+    "type": "int",
+    "description": "每次最多翻多少条历史消息",
+    "default": 300
+  },
+  "web_search_enabled": {
+    "type": "bool",
+    "description": "允许她联网搜索（Bing/搜狗，不需要 API key）",
+    "default": true
+  },
+  "tidy_linebreaks": {
+    "type": "bool",
+    "description": "把回复里的换行并成逗号，避免 QQ 里出现生硬分行",
+    "default": true
+  },
+  "web_enabled": {
+    "type": "bool",
+    "description": "从网上公开语料里学「网感」（B 站热门高赞评论）",
+    "default": true
+  },
+  "web_interval_hours": {
+    "type": "int",
+    "description": "每多少小时上网学一次（0=只手动）",
+    "default": 12
+  },
+  "web_video_count": {
+    "type": "int",
+    "description": "每次抓几个热门视频的评论",
+    "default": 6
+  },
+  "web_max_comments": {
+    "type": "int",
+    "description": "每次最多用多少条评论作为语料",
+    "default": 60
+  },
+  "web_inject": {
+    "type": "bool",
+    "description": "把网感注入提示词（建议开，但限得很短）",
+    "default": true
+  },
+  "web_max_chars": {
+    "type": "int",
+    "description": "网感片段注入的最大字数",
+    "default": 260
+  },
+  "reply_short": {
+    "type": "bool",
+    "description": "限制回复长度与条数",
+    "default": true
+  },
+  "group_reply_max_chars": {
+    "type": "int",
+    "description": "群聊单条回复的字数上限",
+    "default": 40
+  },
+  "private_reply_max_chars": {
+    "type": "int",
+    "description": "私聊每条回复的字数上限",
+    "default": 100
+  },
+  "private_max_messages": {
+    "type": "int",
+    "description": "私聊最多分几条发（1=不分）",
+    "default": 2
+  },
+  "knowledge_max_chars": {
+    "type": "int",
+    "description": "被问正经问题时的字数上限（会放宽）",
+    "default": 260
+  },
+  "knowledge_max_messages": {
+    "type": "int",
+    "description": "被问正经问题时群里最多分几条",
+    "default": 2
+  },
+  "persona_reminder_enabled": {
+    "type": "bool",
+    "description": "每轮在末尾重申一次人设，防止她忘了自己是谁",
+    "default": true
+  },
+  "persona_reminder_chars": {
+    "type": "int",
+    "description": "人设重申的最大字数",
+    "default": 240
+  },
+  "roster_enabled": {
+    "type": "bool",
+    "description": "注入群成员花名册，帮她分清不同的人",
+    "default": true
+  },
+  "roster_max_chars": {
+    "type": "int",
+    "description": "花名册注入的最大字数",
+    "default": 260
+  },
+  "meme_enabled": {
+    "type": "bool",
+    "description": "自动收藏群里的图片/表情包",
+    "default": true
+  },
+  "meme_max_kb": {
+    "type": "int",
+    "description": "单张图最大体积（KB），超过就不收",
+    "default": 2048
+  },
+  "meme_groups": {
+    "type": "list",
+    "description": "只在这些群收图（留空=所有群）",
+    "default": []
+  },
+  "meme_send_enabled": {
+    "type": "bool",
+    "description": "用收藏的表情包回图",
+    "default": true
+  },
+  "meme_reply_probability": {
+    "type": "float",
+    "description": "普通回复时附一张图的概率",
+    "default": 0.12
+  },
+  "meme_reply_on_image_probability": {
+    "type": "float",
+    "description": "对方发图时回图的概率",
+    "default": 0.6
+  },
+  "meme_send_cooldown": {
+    "type": "int",
+    "description": "同一会话两张图之间最小间隔（秒）",
+    "default": 300
+  },
+  "recommend_enabled": {
+    "type": "bool",
+    "description": "启用插件推荐",
+    "default": true
+  },
+  "recommend_admin_qq": {
+    "type": "string",
+    "description": "推荐私信发给哪个 QQ（只填号码）",
+    "default": ""
+  },
+  "recommend_min_stars": {
+    "type": "int",
+    "description": "只推荐 Star 数不低于这个值的插件",
+    "default": 30
+  },
+  "recommend_top_n": {
+    "type": "int",
+    "description": "每次最多推荐几个",
+    "default": 3
+  },
+  "recommend_auto_hours": {
+    "type": "int",
+    "description": "每隔多少小时自动推荐一次（0=关闭自动，只手动）",
+    "default": 0
+  },
+  "debug": {
+    "type": "bool",
+    "description": "输出调试日志",
+    "default": false
+  }
+}

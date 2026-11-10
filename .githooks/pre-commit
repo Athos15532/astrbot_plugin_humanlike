@@ -1,0 +1,37 @@
+#!/bin/sh
+# 提交前自动同步 README 里的配置表。
+# 启用方式（仓库根目录执行一次）：
+#   git config core.hooksPath .githooks
+
+set -e
+
+find_python() {
+  for candidate in "${PYTHON:-}" python python3 py; do
+    [ -n "$candidate" ] || continue
+    if command -v "$candidate" >/dev/null 2>&1; then
+      if "$candidate" -c "import sys" >/dev/null 2>&1; then
+        echo "$candidate"
+        return 0
+      fi
+    fi
+  done
+  return 1
+}
+
+PY=$(find_python || true)
+
+if [ -z "$PY" ]; then
+  echo "[pre-commit] 没找到可用的 Python，跳过配置表同步（推之前记得手动跑 scripts/sync_readme.py）" >&2
+  exit 0
+fi
+
+if [ -f scripts/sync_readme.py ]; then
+  if ! "$PY" scripts/sync_readme.py; then
+    echo "配置表同步失败，提交已中止" >&2
+    exit 1
+  fi
+  if ! git diff --quiet -- README.md; then
+    git add README.md
+    echo "已自动更新 README.md 配置表并加入本次提交"
+  fi
+fi

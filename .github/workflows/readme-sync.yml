@@ -1,0 +1,24 @@
+name: README 配置表
+
+on:
+  push:
+    paths:
+      - "_conf_schema.json"
+      - "README.md"
+      - "scripts/sync_readme.py"
+      - ".github/workflows/readme-sync.yml"
+  pull_request:
+    paths:
+      - "_conf_schema.json"
+      - "README.md"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 检查配置表是否与 schema 一致
+        run: python scripts/sync_readme.py --check
